@@ -13,10 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up image tag
-        id: tag
-        run: echo "TAG=$(date +%s)" >> $GITHUB_ENV
-
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag forestsystem/atm9-server:${{ env.TAG }}
 
@@ -24,4 +20,4 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Push image
-        run: docker push forestsystem/atm9-server:${{ env.TAG }}
+        run: docker push forestsystem/atm9-server:latest
