@@ -15,7 +15,7 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          DATE_TAG=$(date +'%Y%m%d')
+          DATE_TAG=$(date +'%Y-%m-%d')
           docker build . --file Dockerfile --tag forestsystem/atm9-server:${DATE_TAG} --tag forestsystem/atm9-server:latest
 
       - name: Log in to Docker Hub
